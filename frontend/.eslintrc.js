@@ -2,7 +2,6 @@ module.exports = {
   'env': {
     'browser': true,
     'es6': true,
-    'jest/globals': true,
     'commonjs': true,
     'node': true,
   },
@@ -18,7 +17,7 @@ module.exports = {
     'sourceType': 'module'
   },
   'plugins': [
-    'react', 'jest'
+    'react'
   ],
   'rules': {
     'indent': [
