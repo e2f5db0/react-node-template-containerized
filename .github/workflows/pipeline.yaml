@@ -30,8 +30,13 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install: false
+<<<<<<< HEAD
           command: cd ./backend/ && npm run test:e2e
           start: npm start
+=======
+          command: npm run test:e2e
+          start: cd ./backend/ && npm start
+>>>>>>> ef16a16ebca89a480ee37e65153284aed1c4afd3
           wait-on: http://localhost:3001
       - uses: akhileshns/heroku-deploy@v3.12.12
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
