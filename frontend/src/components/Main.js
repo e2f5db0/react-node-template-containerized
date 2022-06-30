@@ -1,11 +1,31 @@
-import React from 'react'
+import axios from '../util/apiClient'
+import React, { useEffect, useState } from 'react'
+import ExampleList from './ExampleList'
 
 const Main = () => {
+
+  const [examples, setExamples] = useState([])
+
+  const refreshExamples = async () => {
+    const { data } = await axios.get('/examples')
+    setExamples(data)
+  }
+
+  const deleteExample = async (example) => {
+    await axios.delete(`/examples/${example._id}`)
+    refreshExamples()
+  }
+
+  useEffect(() => {
+    refreshExamples()
+  }, [])
 
   return (
     <div className='Container'>
       <h1>React Node Template</h1>
-      <p>–with mobile responsive navbar</p>
+      <p>– containerized edition</p>
+      <h3>Current Examples in the mongo database:</h3>
+      <ExampleList examples={examples} deleteExample={deleteExample} />
     </div>
   )
 }

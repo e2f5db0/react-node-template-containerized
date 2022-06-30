@@ -22,32 +22,17 @@ PORT=3001
 
 ```
 
-Before running the app you need to install requirements:
+### Running the development containers
+
+Make sure you are not connected to a VPN or else the network created by docker-compose is unreachable.
+
+In the root folder:
 
 ```bash
-> npm install
-> cd ./frontend/
-> npm install
-```
-
-## Available scripts (run in the root folder)
-
-Run in development mode (nodemon):
-
-```bash
-> npm run dev
-```
-
-Build the production version (optimized)
-
-```bash
-> npm run build
-```
-
-Start the production server
-
-```bash
-> npm start
+# The frontend runs on localhost:3000.
+# nginx serves the frontend on localhost:8080.
+# The backend runs on localhost:3001.
+> docker-compose -f docker-compose.dev.yaml up
 ```
 
 ### Linting
@@ -55,25 +40,30 @@ Start the production server
 Make sure to lint the code before trying to make PRs and fix all lint issues
 
 ```bash
+> cd ./backend/
+> cd ./frontend/
 > npm run eslint
 ```
 
 ### Testing
 
-Run unit tests (jest)
+Run frontend tests (jest)
 
 ```bash
+> cd ./frontend/
 > npm run test
 ```
 
 Run end-to-end tests (cypress)
 
 ```bash
+> cd ./backend/
 > npm run test:e2e
 ```
 
 e2e interactive mode
 
 ```bash
+> cd ./backend/
 > npm run cypress:open
 ```

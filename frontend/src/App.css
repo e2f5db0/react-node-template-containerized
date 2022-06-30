@@ -25,6 +25,10 @@ html {
   flex-wrap: wrap;
 }
 
+p {
+  margin: .5em;
+}
+
 .Navbar {
   margin-top: 3%;
   margin: auto;
@@ -101,19 +105,30 @@ html {
   background: gainsboro;
 }
 
-.Button-rng {
-  margin-top: .5em;
-  width: 300px;
-  height: 70px;
+.Button {
+  margin-top: 1em;
+  width: 5em;
+  height: 3em;
   border: none;
   background-color: black;
   color: #d1ebff;
-  font-family: Upheaval;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
-.Button-rng:hover {
+.Button:hover {
   transform: scale(1.05);
+}
+
+.Input {
+  height: 3em;
+  width: 33em;
+  margin-top: 1em;
+  font-size: medium;
+  padding: .3em;
+}
+
+.ExampleForm {
+  margin-top: 2em;
 }
 
 .Backdrop {
