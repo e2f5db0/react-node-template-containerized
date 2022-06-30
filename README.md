@@ -10,7 +10,7 @@ Clone the repository
 git clone <repository>
 ```
 
-Create `.env` file in the root directory.
+Create the file `.env` in the root of the `./backend/` directory.
 
 Define the necessary environment variables in `.env`.
 
@@ -18,13 +18,17 @@ Example contents of `.env`:
 
 ```
 
-PORT=3001
+SOME_SECRET=token6276
 
 ```
+The environment variables declared in `.env` can be accessed like this:
+```nodejs
+const secret = process.env.SOME_SECRET
+```
 
-### Running the development containers
+## Running the development containers
 
-Make sure you are not connected to a VPN or else the network created by docker-compose is unreachable.
+`Note:` Make sure you are not connected to a VPN or else the network created by docker-compose will be unreachable.
 
 In the root folder:
 
@@ -61,7 +65,7 @@ Run end-to-end tests (cypress)
 > npm run test:e2e
 ```
 
-e2e interactive mode
+e2e tests interactive mode
 
 ```bash
 > cd ./backend/
