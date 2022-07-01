@@ -23,9 +23,9 @@ const ExampleForm = ({ createExample }) => {
     <div className='ExampleForm'>
       <p>Add an Example to the mongo database</p>
       <form onSubmit={handleSubmit}>
-        <input className='Input' type="text" placeholder='Field 1' name="text" value={field1} onChange={onChangeField1} />
+        <input className='Input' type="text" placeholder='Statement' name="text" value={field1} onChange={onChangeField1} />
         <br></br>
-        <input className='Input' type="text" placeholder='Field 2' name="text" value={field2} onChange={onChangeField2} />
+        <input className='Input' type="text" placeholder='true / false' name="text" value={field2} onChange={onChangeField2} />
         <br></br>
         <button className='Button' type="submit"> Submit </button>
       </form>

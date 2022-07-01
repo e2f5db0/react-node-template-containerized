@@ -16,20 +16,24 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: npm install backend
+      - name: Run npm install (backend)
         run: cd ./backend/ && npm install
-      - name: npm install frontend
+      - name: Run npm install (frontend)
         run: cd ./frontend/ && npm install
-      - name: lint
-        run: cd ./backend/ && npm run eslint && cd ../frontend/ && npm run eslint 
-      - name: e2e tests
+      - name: Run eslint
+        run: cd ./backend/ && npm run eslint && cd ../frontend/ && npm run eslint
+      - name: Run tests (frontend)
+        run: cd ./frontend/ && npm run test
+      - name: Run e2e tests
         uses: cypress-io/github-action@v2
         with:
           install: false
           working-directory: backend
           command: npm run test:e2e
           start: docker-compose up
+          timeout-minutes: 5
           wait-on: http://localhost:5000
+        timeout-minutes: 5
         env:
           DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
           DB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
