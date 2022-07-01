@@ -5,14 +5,14 @@ var bodyParser = require('body-parser')
 
 const app = express()
 
-const indexRouter = require('./routes/index');
-const examplesRouter = require('./routes/examples');
+const indexRouter = require('./routes/index')
+const examplesRouter = require('./routes/examples')
 
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use('/', indexRouter);
-app.use('/examples', examplesRouter);
+app.use('/', indexRouter)
+app.use('/examples', examplesRouter)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {

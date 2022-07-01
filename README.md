@@ -34,7 +34,7 @@ MONGO_URL_DEV=mongodb://<DB_USER>:<DB_PASSWORD>@template-mongo:27017/<DB_NAME>
 
 ## Running the development containers
 
-`Note:` Make sure you are not connected to a VPN or else the network created by docker-compose will be unreachable.
+`Note:` Make sure you are not connected to a VPN or else the network created by docker-compose will be unreachable during development.
 
 In the root folder:
 
@@ -91,3 +91,4 @@ To run in production mode (run all commands in the root folder):
 # The app runs on localhost:5000
 > docker-compose --env-file ./backend/.env up
 ```
+ 

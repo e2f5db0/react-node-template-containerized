@@ -1,8 +1,14 @@
 import React from 'react'
 
 const ExampleList = ({ examples, deleteExample }) => {
+  
   const onClickDelete = (example) => () => {
     deleteExample(example)
+  }
+
+  const createKeyProp = () => {
+    const key = Math.round((1 + (Math.random() * (9999-1))))
+    return key
   }
 
   if (examples.length === 0) {
@@ -12,12 +18,11 @@ const ExampleList = ({ examples, deleteExample }) => {
       </>
     )
   }
-
   return (
     <>
       {examples.map(example => {
         return (
-          <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
+          <div key={example._id} style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
             <p>
               field1: <b>{example.field1}</b>
             </p>
@@ -29,7 +34,7 @@ const ExampleList = ({ examples, deleteExample }) => {
             </span>
           </div>
         )
-      }).reduce((acc, cur) => [...acc, <hr />, cur], [])}
+      }).reduce((acc, cur) => [...acc, <hr key={createKeyProp()} />, cur], [])}
     </>
   )
 }
