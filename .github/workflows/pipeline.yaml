@@ -13,19 +13,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: npm install backend
-        run: cd ./backend/ && npm install
-      - name: npm install frontend
-        run: cd ./frontend/ && npm install
-      - name: lint
-        run: cd ./backend/ && npm run eslint && cd ../frontend/ && npm run eslint
-      - name: build
-        run: cd ./frontend/ && npm run build
-      - name: test frontend
-        run: cd ./frontend/ && npm run test
+      - name: run docker-compose
+        run: docker-compose --env-file ./backend/.env up
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
@@ -33,7 +22,7 @@ jobs:
           working-directory: backend
           command: npm run test:e2e
           start: npm start
-          wait-on: http://localhost:3001
+          wait-on: http://localhost:5000
       - uses: akhileshns/heroku-deploy@v3.12.12
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
         with:
