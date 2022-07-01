@@ -33,15 +33,32 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
           MONGO_URL: ${{ secrets.MONGO_URL }}
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Deploy to Heroku (backend)
+        uses: akhileshns/heroku-deploy@v3.12.12
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "reactnodetemplatecontainerized"
+          heroku_app_name: "templatecontainerized-backend"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           healthcheck: https://reactnodetemplatecontainerized.herokuapp.com/health
           checkstring: ok
           rollbackonhealthcheckfailed: true
+          usedocker: true
+          stack: container
+          appdir: "backend"
+      - name: Deploy to Heroku (frontend)
+        uses: akhileshns/heroku-deploy@v3.12.12
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "templatecontainerized-frontend"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          healthcheck: https://reactnodetemplatecontainerized.herokuapp.com/health
+          checkstring: ok
+          rollbackonhealthcheckfailed: true
+          usedocker: true
+          stack: container
+          appdir: "backend"
   tag_release:
     needs: [deployment_pipeline]
     runs-on: ubuntu-20.04
