@@ -13,16 +13,21 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: run docker-compose
-        run: docker-compose --env-file ./backend/.env up
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
           install: false
           working-directory: backend
           command: npm run test:e2e
-          start: npm start
+          start: docker-compose up
           wait-on: http://localhost:5000
+          env:
+            DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
+            DB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
+            DB_USER: ${{ secrets.DB_USER }}
+            DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+            DB_NAME: ${{ secrets.DB_NAME }}
+            MONGO_URL: ${{ secrets.MONGO_URL }}
       - uses: akhileshns/heroku-deploy@v3.12.12
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
         with:
