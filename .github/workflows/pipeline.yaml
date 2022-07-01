@@ -25,7 +25,11 @@ jobs:
       - name: Run tests (frontend)
         run: cd ./frontend/ && npm run test
       - name: Run e2e tests
+<<<<<<< HEAD
         run: docker-compose up & cd ./backend/ && sleep 600 && npm run test:e2e
+=======
+        run: docker-compose up & cd ./backend/ && sleep 180 && npm run test:e2e
+>>>>>>> f836cca5ae4f4a7c85d1d03e2ecdb7928ce4403f
         env:
           DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
           DB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
