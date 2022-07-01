@@ -30,10 +30,9 @@ jobs:
           install: false
           working-directory: backend
           command: npm run test:e2e
-          start: docker-compose up
-          timeout-minutes: 5
+          start: docker-compose -f ../docker-compose.yaml up
           wait-on: http://localhost:5000
-        timeout-minutes: 5
+        timeout-minutes: 6
         env:
           DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
           DB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
