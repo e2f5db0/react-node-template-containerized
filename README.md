@@ -14,17 +14,23 @@ Create the file `.env` in the root of the `./backend/` directory.
 
 Define the necessary environment variables in `.env`.
 
-Example contents of `.env`:
+Example contents of `.env` to get the development environment running:
 
 ```
 
-SOME_SECRET=token6276
+DB_ROOT_USER=root
+DB_ROOT_PASSWORD=example
+DB_USER=the_user
+DB_PASSWORD=the_password
+DB_NAME=the_database
+# Replace the values in <> and remove the <>
+MONGO_URL_DEV=mongodb://<same-as-DB_USER>:<same-as-DB_PASSWORD>@template-mongo-dev:27017/<same-as-DB_NAME>
+# production mongo url (use your own credentials)
+MONGO_URL_DEV=mongodb://<DB_USER>:<DB_PASSWORD>@template-mongo:27017/<DB_NAME>
 
 ```
-The environment variables declared in `.env` can be accessed like this:
-```nodejs
-const secret = process.env.SOME_SECRET
-```
+
+`Note:` Remember to set & change these in the environment where you deploy (ex. Heroku)!
 
 ## Running the development containers
 
@@ -36,8 +42,10 @@ In the root folder:
 # The frontend runs on localhost:3000.
 # nginx serves the frontend on localhost:8080.
 # The backend runs on localhost:3001.
-> docker-compose -f docker-compose.dev.yaml up
+> docker-compose -f docker-compose.dev.yaml up --env-file ./backend/.env
 ```
+
+`Note:` You may have to type sudo in front of the *docker-compose* and *docker* commands.
 
 ### Linting
 
@@ -70,4 +78,16 @@ e2e tests interactive mode
 ```bash
 > cd ./backend/
 > npm run cypress:open
+```
+
+## Production
+
+To run in production mode (run all commands in the root folder):
+
+```bash
+# Build the docker images
+> cd ./backend/ && docker build -t template-backend .
+> cd ./frontend/ && docker build -t template-frontend .
+# The app runs on localhost:5000
+> docker-compose --env-file ./backend/.env up
 ```

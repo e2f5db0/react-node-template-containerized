@@ -23,7 +23,7 @@ const Main = () => {
   return (
     <div className='Container'>
       <h1>React Node Template</h1>
-      <p>– containerized edition</p>
+      <p>A good starting point for any React app – containerized edition</p>
       <h3>Current Examples in the mongo database:</h3>
       <ExampleList examples={examples} deleteExample={deleteExample} />
     </div>

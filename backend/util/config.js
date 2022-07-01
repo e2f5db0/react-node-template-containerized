@@ -1,4 +1,6 @@
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://the_username:the_password@localhost:3456/the_database'
+require('dotenv').config()
+
+const MONGO_URL = process.env.NODE_ENV === 'development' ? process.env.MONGO_URL_DEV : process.env.MONGO_URL
 
 module.exports = {
   MONGO_URL,
