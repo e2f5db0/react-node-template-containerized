@@ -1,6 +1,11 @@
 # React-node template
 
-A template for a React web application with node backend. Ready for deploying to Heroku.
+A containerized starting point for a react node web application.
+
+## Todo
+
+- Figure out the database setup after deployment (MongoDB)
+- Figure out how to deploy the whole containerized setup to Heroku with the github actions pipeline (One dyno for each Dockerfile? How will the containers communicate without docker-compose?)
 
 ## Development
 
