@@ -4,6 +4,6 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://localhost:5000',
     video: false,
-    pageLoadTimeout: 600000
+    pageLoadTimeout: 1200000
   },
 })
