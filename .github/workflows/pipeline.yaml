@@ -14,7 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: run docker-compose
-        run: docker-compose --env-file ./backend/.env up
+        run: docker-compose up
+        env:
+          DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
+          DB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
