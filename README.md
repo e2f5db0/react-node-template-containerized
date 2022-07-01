@@ -66,19 +66,7 @@ Run frontend tests (jest)
 > npm run test
 ```
 
-Run end-to-end tests (cypress)
-
-```bash
-> cd ./backend/
-> npm run test:e2e
-```
-
-e2e tests interactive mode
-
-```bash
-> cd ./backend/
-> npm run cypress:open
-```
+Backend unit tests are yet to be implemented.
 
 ## Production
 
@@ -90,5 +78,24 @@ To run in production mode (run all commands in the root folder):
 > cd ./frontend/ && docker build -t template-frontend .
 # The app runs on localhost:5000
 > docker-compose --env-file ./backend/.env up
+```
+
+## E2E tests in production mode
+
+Run end-to-end tests (cypress)
+
+```bash
+> docker-compose --env-file ./backend/.env up
+# Run in other terminal
+> cd ./backend/
+> npm run test:e2e
+```
+
+Run e2e tests in interactive mode
+
+```bash
+# Expects that the production environment is running
+> cd ./backend/
+> npm run cypress:open
 ```
  
