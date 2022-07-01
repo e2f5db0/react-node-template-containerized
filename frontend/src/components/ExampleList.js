@@ -1,13 +1,13 @@
 import React from 'react'
 
 const ExampleList = ({ examples, deleteExample }) => {
-  
+
   const onClickDelete = (example) => () => {
     deleteExample(example)
   }
 
   const createKeyProp = () => {
-    const key = Math.round((1 + (Math.random() * (9999-1))))
+    const key = Math.round((1 + (Math.random() * (9999 - 1))))
     return key
   }
 
