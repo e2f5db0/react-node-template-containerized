@@ -33,7 +33,7 @@ DB_NAME=the_database
 # Replace the values in <> and remove the <>
 MONGO_URL_DEV=mongodb://<same-as-DB_USER>:<same-as-DB_PASSWORD>@template-mongo-dev:27017/<same-as-DB_NAME>
 # production mongo url (use your own credentials)
-MONGO_URL_DEV=mongodb://<DB_USER>:<DB_PASSWORD>@template-mongo:27017/<DB_NAME>
+MONGO_URL=mongodb://<DB_USER>:<DB_PASSWORD>@template-mongo:27017/<DB_NAME>
 
 ```
 
