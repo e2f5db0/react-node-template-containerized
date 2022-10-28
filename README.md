@@ -43,6 +43,8 @@ MONGO_URL=mongodb://<DB_USER>:<DB_PASSWORD>@template-mongo:27017/<DB_NAME>
 
 `Note:` Make sure you are not connected to a VPN or else the network created by docker-compose will be unreachable during development.
 
+`Note:` It may be a good idea to delete package-lock.json files from both frontend and backend before continuing.
+
 In the root folder:
 
 ```bash
