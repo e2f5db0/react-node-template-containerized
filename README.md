@@ -15,6 +15,8 @@ Clone the repository
 git clone <repository>
 ```
 
+Install & run [Docker desktop](https://www.docker.com/products/docker-desktop/)
+
 Create the file `.env` in the root of the `./backend/` directory.
 
 Define the necessary environment variables in `.env`.
@@ -22,7 +24,7 @@ Define the necessary environment variables in `.env`.
 Example contents of `.env` to get the development environment running:
 
 ```
-
+MONGO_ENV=development
 DB_ROOT_USER=root
 DB_ROOT_PASSWORD=example
 DB_USER=the_user
@@ -47,7 +49,8 @@ In the root folder:
 # The frontend runs on localhost:3000.
 # nginx serves the frontend on localhost:8080.
 # The backend runs on localhost:3001.
-> docker-compose -f docker-compose.dev.yaml up --env-file ./backend/.env
+> docker-compose -f docker-compose.dev.yaml up --env-file ./backend/.env # with docker-compose
+> docker compose -f docker-compose.dev.yaml --env-file ./backend/.env up # with docker desktop
 ```
 
 `Note:` You may have to type sudo in front of the *docker-compose* and *docker* commands.
@@ -82,7 +85,8 @@ To run in production mode (run all commands in the root folder):
 > cd ./backend/ && docker build -t template-backend .
 > cd ./frontend/ && docker build -t template-frontend .
 # The app runs on localhost:5000
-> docker-compose --env-file ./backend/.env up
+> docker-compose --env-file ./backend/.env up # with docker-compose
+> docker compose --env-file ./backend/.env up # with docker desktop
 ```
 
 ## E2E tests in production mode
@@ -90,7 +94,8 @@ To run in production mode (run all commands in the root folder):
 Run end-to-end tests (cypress)
 
 ```bash
-> docker-compose --env-file ./backend/.env up
+> docker-compose --env-file ./backend/.env up # with docker-compose
+> docker compose --env-file ./backend/.env up # with docker desktop
 # Run in other terminal
 > cd ./backend/
 > npm run test:e2e
