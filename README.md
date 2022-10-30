@@ -41,7 +41,7 @@ MONGO_URL=mongodb://<DB_USER>:<DB_PASSWORD>@template-mongo:27017/<DB_NAME>
 
 ```
 
-Now change the credentials in [mongo-init.js](https://github.com/e2f5db0/bill-splitter/blob/master/backend/mongo/mongo-init.js) to match the .env file. mongo-init.js cannot utilize dotenv, unfortunately.
+Now change the credentials in [mongo-init.js](https://github.com/e2f5db0/bill-splitter/blob/master/backend/mongo/mongo-init.js) to match the .env file. *mongo-init.js* cannot utilize dotenv, unfortunately.
 
 `Note:` Do NOT push your credentials in *mongo-init.js* to github! You can for example add *mongo-init.js* to *.gitignore* after you have changed the credentials.
 
@@ -62,6 +62,12 @@ In the root folder:
 ```
 
 `Note:` You may have to type sudo in front of the *docker-compose* and *docker* commands.
+
+`Debug:` If changes do not trigger nodemon live-reload, try to add -L (--legacy-watch) flag to dev script in *package.json*:
+
+```
+"dev": "nodemon -L index.js"
+```
 
 ### Linting
 
